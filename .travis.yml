@@ -25,7 +25,7 @@ script:
   - dotnet run
   
 after_script:
-  - dotnet publish -o publish
+  - dotnet publish --output publish
   - cd publish
   - git init
   - git config user.name "${U_NAME}"
