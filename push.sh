@@ -1,4 +1,4 @@
 git pull
 git add *
-git commit -m update_%1%
+git commit -m update
 git push
