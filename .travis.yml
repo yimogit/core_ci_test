@@ -23,3 +23,17 @@ script:
   - dotnet --info
   - dotnet --version
   - dotnet run
+  
+after_script:
+  - dotnet publish -o publish
+  - cd publish
+  - git init
+  - git config user.name "${U_NAME}"
+  - git config user.email "${U_EMAIL}"
+  - git add .
+  - git commit -m "publish"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
+
+  branches:
+  only:
+    - master
