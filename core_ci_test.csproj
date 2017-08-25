@@ -4,10 +4,13 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="PhantomJS" Version="2.1.1" />
+    <PackageReference Include="CoreCompat.Selenium.WebDriver" Version="3.4.0-beta001" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="test.js">
+    <None Update="tasks\a.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="tasks\test.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

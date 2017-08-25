@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Utils
@@ -92,6 +93,11 @@ namespace Utils
             {
                 return string.Empty;
             }
+        }
+        public static List<string> GetChildFiles(string dirPath)
+        {
+            var dirInfo = new System.IO.DirectoryInfo(dirPath);
+            return dirInfo.GetFiles().Select(e => e.FullName).ToList();
         }
     }
 }

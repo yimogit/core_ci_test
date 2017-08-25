@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Utils;
+using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium;
+
 namespace core_ci_test
 {
     class Program
@@ -11,15 +14,32 @@ namespace core_ci_test
 
             Console.WriteLine("start");
             AutoTask();
-            // System.Console.WriteLine("获取代理IP...");
-            // var list = GetProxyIp();
-            // list.ForEach(e=>Console.WriteLine(e));
-            // System.Console.WriteLine($"获取代理IP:{list.Count}...");
+            //System.Console.WriteLine("获取代理IP...");
+            //var list = GetProxyIp();
+            //System.Console.WriteLine($"获取代理IP:{list.Count}...");
+            //Console.WriteLine("模拟打开");
+            //list.ForEach(e => AutoTask(e));
             Console.WriteLine("end");
         }
-        static void AutoTask()
+        static void AutoTask(string proxyIp = null)
         {
-            FileHelper.RunCmd("phantomjs", " -v");
+            var driver = new PhantomJSDriver();
+            driver.Navigate().GoToUrl("https://www.cnblogs.com");
+            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            screenshot.SaveAsFile("cnblogs.png", ScreenshotImageFormat.Png);
+        }
+
+
+        static void AutoTask2(string proxyIp = null)
+        {
+            //Console.WriteLine("phantomjs version：");
+            //FileHelper.RunCmd("phantomjs", " -v");
+            //var taskDir = "tasks";
+            //FileHelper.GetChildFiles("tasks").ForEach(e =>
+            //{
+            //    FileHelper.RunCmd("phantomjs", e);
+            //});
+
         }
 
         static List<string> GetProxyIp()
