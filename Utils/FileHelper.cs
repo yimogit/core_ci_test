@@ -53,22 +53,22 @@ namespace Utils
             }
             catch { }
         }
-        public static string WriteFile(string input, string fileName)
+        public static void WriteFile(string input, string fileName)
         {
-            if (string.IsNullOrWhiteSpace(fileName))
+            using (FileStream fs = new FileStream(fileName, FileMode.Append, FileAccess.Write,
+                                                  FileShare.Write, 1024, FileOptions.Asynchronous))
             {
-                return "写入的文件名不能为空";
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(input + "\r\n");
+                IAsyncResult writeResult = fs.BeginWrite(buffer, 0, buffer.Length,
+                    (asyncResult) =>
+                    {
+                        var fStream = (FileStream)asyncResult.AsyncState;
+                        fStream.EndWrite(asyncResult);
+                    },
+                    fs);
+                fs.Close();
             }
-            try
-            {
-                var savePath = fileName;
-                System.IO.File.WriteAllText(savePath, input, System.Text.Encoding.UTF8);
-            }
-            catch
-            {
-                return null;
-            }
-            return string.Empty;
+
         }
         public static string ReadFile(string fileName)
         {
