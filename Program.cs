@@ -16,7 +16,6 @@ namespace core_ci_test
             // list.ForEach(e=>Console.WriteLine(e));
             // System.Console.WriteLine($"获取代理IP:{list.Count}...");
             Console.WriteLine("end");
-            Console.ReadKey();
         }
         static void AutoTask()
         {

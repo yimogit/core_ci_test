@@ -39,6 +39,8 @@ namespace Utils
         /// <param name="cmdStr">执行命令行参数</param>
         public static void RunCmd(string cmdExe, string cmdStr)
         {
+            try
+            {
                 using (Process myPro = new Process())
                 {
                     //指定启动进程是调用的应用程序和命令行参数
@@ -47,6 +49,8 @@ namespace Utils
                     myPro.Start();
                     myPro.WaitForExit();
                 }
+            }
+            catch { }
         }
         public static string WriteFile(string input, string fileName)
         {
