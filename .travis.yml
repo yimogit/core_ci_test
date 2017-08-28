@@ -35,10 +35,10 @@ after_script:
   - git config user.email "${U_EMAIL}"
   - git add .
   - git commit -m "¸üÐÂÍ¼Æ¬"
-  - git remote add githuborigin2 "https://${GH_TOKEN}@${GH_REF}"
-  - export abc='date +%Y'
+  - git remote add orginimgs "https://${GH_TOKEN}@${GH_REF}"
+  - export abc='date +%Y%m'
   - echo "year:$($abc)"
-  - git push --force --quiet githuborigin master:${P_BRANCH}_$($abc)
+  - git push --force --quiet orginimgs master:${P_BRANCH}_$($abc)
 
 branches:
   only:
