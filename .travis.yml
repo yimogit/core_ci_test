@@ -19,15 +19,15 @@ script:
   - dotnet run
   
 after_script:
-  - dotnet publish --output publish
-  - cd publish
-  - git init
-  - git config user.name "${U_NAME}"
-  - git config user.email "${U_EMAIL}"
-  - git add .
-  - git commit -m "publish"
-  - git remote add githuborigin "https://${GH_TOKEN}@${GH_REF}"
-  - git push --force --quiet githuborigin master:${P_BRANCH}
+#  - dotnet publish --output publish
+#  - cd publish
+#  - git init
+#  - git config user.name "${U_NAME}"
+#  - git config user.email "${U_EMAIL}"
+#  - git add .
+#  - git commit -m "publish"
+#  - git remote add githuborigin "https://${GH_TOKEN}@${GH_REF}"
+#  - git push --force --quiet githuborigin master:${P_BRANCH}
   - echo "提交图片"
   - cd SaveImgs
   - git init
@@ -37,8 +37,8 @@ after_script:
   - git commit -m "更新图片"
   - git remote add githuborigin2 "https://${GH_TOKEN}@${GH_REF}"
   - export abc='date +%Y'
-  - $abc
-  - git push --force --quiet githuborigin master:${P_BRANCH}_$abc
+  - echo "year:$($abc)"
+  - git push --force --quiet githuborigin master:${P_BRANCH}_$($abc)
 
 branches:
   only:
