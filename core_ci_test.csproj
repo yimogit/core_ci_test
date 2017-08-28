@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CoreCompat.Selenium.WebDriver" Version="3.4.0-beta001" />
+    <PackageReference Include="Selenium.PhantomJS.WebDriver" Version="2.1.1" />
   </ItemGroup>
   <ItemGroup>
     <None Update="tasks\a.js">
